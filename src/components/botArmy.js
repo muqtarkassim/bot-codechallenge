@@ -1,10 +1,14 @@
 import React from "react";
 
 
-export default function Army(){
+export default function Army({myArmy}){
     return(
         <div className="army">
-<p>mya rmy</p>
+        <h2> Here is your Bot Army !</h2>
+        <div className="all-bots">
+        {myArmy}
+        </div>
+
         </div>
     )
 }

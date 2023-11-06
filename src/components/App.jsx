@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import Botcollection from "./botCollection"
+import Home from "./Home"
+import Navbar from "./navbar"
 
  export default function App(){
 const [botdata,setbotdata]=useState([])
@@ -9,6 +10,9 @@ const [botdata,setbotdata]=useState([])
         .then(data=>setbotdata(data))
     },[])
     return (
-        <Botcollection  data={botdata}/>
+        <div>
+        <Navbar/>
+        <Home data={botdata}/>
+        </div>
     )
 }
