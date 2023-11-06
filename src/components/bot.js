@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import "./App.css";
 import HeartBrokenIcon from '@mui/icons-material/HeartBroken'; 
-import { Bolt, Shield } from "@mui/icons-material";
+import { Bolt, Dangerous, EmergencyShareOutlined, FlightTakeoff, Medication, Shield, ShieldTwoTone, Woman2Outlined } from "@mui/icons-material";
 
 export default function Bot({ img, name, health, damage, shield, type, phrase, handleclick, id }) {
   const ArmyRef = useRef();
@@ -14,7 +14,10 @@ export default function Bot({ img, name, health, damage, shield, type, phrase, h
       </div>
       <div className="content">
         <h5>
-          {name} <span> {type}</span>
+          {name} <span>  {type === "Support" ?  <EmergencyShareOutlined/>: type === "Defender" ? <ShieldTwoTone/>
+           :type==="Medic"?<Medication/> :type==="Witch"?<Woman2Outlined/>:type==="Captain"?<FlightTakeoff/>:type="Assault"?
+
+           <Dangerous/>: null} {shield}</span>
         </h5>
         <p>{phrase}</p>
         <hr></hr>
