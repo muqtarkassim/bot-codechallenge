@@ -2,9 +2,28 @@ import React, { useRef, useState } from "react";
 import Bot from "./bot";
 import Army from "./botArmy";
 import Botcollection from "./botCollection";
-export default function Home({data}){
+export default function Home({data,setbotdata}){
 const[armybot,setarmybot]=useState([])
-
+//
+function handledelete(id){
+  fetch(`http://localhost:8000/bots/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+  .then((res)=>{
+    if(res.status===200){
+      const updatedData = data.filter((bot) => bot.id !== id);
+      setbotdata(updatedData);
+      const updatedArmybot = armybot.filter((bot) => bot.id !== id);
+      setarmybot(updatedArmybot);
+    }
+    else{
+      alert('no item deleted')
+    }
+  })
+}
 // function to handle when a bot is cliked in botcollection 
 function handleclick(id) {
     // Find the selected bot by its ID
@@ -30,6 +49,7 @@ shield={item.armor}
 phrase={item.catchphrase}
 type={item.bot_class}
 handleclick={ removeFromArmy}
+handledelete={handledelete}
 id={item.id}
 />)
     /////bot collection algorthm
@@ -39,6 +59,7 @@ id={item.id}
     phrase={item.catchphrase}
     type={item.bot_class}
     handleclick={ handleclick}
+    handledelete={handledelete}
     id={item.id}
     />)
     ///////

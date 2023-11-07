@@ -3,7 +3,7 @@ import "./App.css";
 import HeartBrokenIcon from '@mui/icons-material/HeartBroken'; 
 import { Bolt, Dangerous, EmergencyShareOutlined, FlightTakeoff, Medication, Shield, ShieldTwoTone, Woman2Outlined } from "@mui/icons-material";
 
-export default function Bot({ img, name, health, damage, shield, type, phrase, handleclick, id }) {
+export default function Bot({ img, name, health, damage, shield, type, phrase, handleclick, id,handledelete }) {
   const ArmyRef = useRef();
   console.log();
 
@@ -31,6 +31,7 @@ export default function Bot({ img, name, health, damage, shield, type, phrase, h
           </p>
         </div>
       </div>
+      <button onClick={()=>handledelete(id)}>Discharge</button>
     </div>
   );
 }
