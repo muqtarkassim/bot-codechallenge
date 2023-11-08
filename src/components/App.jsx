@@ -14,13 +14,13 @@ const [botdata,setbotdata]=useState([])
     return (
         <div>
         <Navbar/>
-
-    
-      <Routes>
-       
-          <Route index element={<Home data={botdata} setbotdata={setbotdata}/>} />
-          
-        
+       <Routes>
+       <Route path="/" element={<Home data={botdata} setbotdata={setbotdata}/>}>
+       </Route>
+       <Route path="/bots">
+       <Route index element={<h1>my bots</h1>} />
+       <Route path=":id" element={<h1>hey there this is bot 1</h1>}/> 
+       </Route>
       </Routes>
     
       
